@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 
@@ -11,7 +12,7 @@ app.post("/authenticate", async (req, res) => {
     const r = await axios.put(
         'https://api.chatengine.io/users/',
         {username: username, secret: username, first_name: username},
-        {headers: {"private-key": "1bc06cc4-1b76-4f42-b3da-cbdfce853449"}}
+        {headers: {"private-key": import.meta.env.VITE_CHAT_ENGINE_PROJECT_ID}}
     );
     return res.status(r.status).json(r.data);
   } catch (e) {
